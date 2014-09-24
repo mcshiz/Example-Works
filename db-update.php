@@ -65,52 +65,37 @@ $resultID = mysql_query($query, $linkID) or die(mysql_error());
     
     if (in_array("build", $trimmed_array, TRUE)) {
         array_push($fallback, 85);
-    };       
-    if (in_array("off grid solar system", $trimmed_array, TRUE)) {
+    } elseif (in_array("off grid solar system", $trimmed_array, TRUE)) {
         array_push($fallback, 85);
-    };
-    if (in_array("grid tie solar system", $trimmed_array, TRUE)) {
+    } elseif (in_array("grid tie solar system", $trimmed_array, TRUE)) {
         array_push($fallback, 85);
-    };  
-    if (in_array("inverters", $trimmed_array, TRUE)) {
+    } elseif (in_array("inverters", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };
-    if (in_array("grid tie inverters", $trimmed_array, TRUE)) {
+    } elseif (in_array("grid tie inverters", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };
-    if (in_array("off grid inverters", $trimmed_array, TRUE)) {
+    } elseif (in_array("off grid inverters", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };          
-    if (in_array("meters", $trimmed_array, TRUE)) {
+    } elseif (in_array("meters", $trimmed_array, TRUE)) {
        array_push($fallback, 775);
-    };
-    if (in_array("solar panel", $trimmed_array, TRUE)) {
+    } elseif (in_array("solar panel", $trimmed_array, TRUE)) {
         array_push($fallback, 85);
-    };
-    if (in_array("battery inverter", $trimmed_array, TRUE)) {
+    } elseif (in_array("battery inverter", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };
-    if (in_array("disconnects", $trimmed_array, TRUE)) {
+    } elseif (in_array("disconnects", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };
-    if (in_array("charge controller", $trimmed_array, TRUE)) {
+    } elseif (in_array("charge controller", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };
-    if (in_array("wind", $trimmed_array, TRUE)) {
+    } elseif (in_array("wind", $trimmed_array, TRUE)) {
         array_push($fallback, 775);
-    };
-    if (in_array("wire", $trimmed_array, TRUE)) {
+    } elseif (in_array("wire", $trimmed_array, TRUE)) {
        array_push($fallback, 775);
-    };
-    if (in_array("racks", $trimmed_array, TRUE)) {
+    } elseif (in_array("racks", $trimmed_array, TRUE)) {
         array_push($fallback, 925);
-    };
-    if (in_array("batteries", $trimmed_array, TRUE)) {
+    } elseif (in_array("batteries", $trimmed_array, TRUE)) {
         array_push($fallback, 70);
-    };
-    if (in_array("systems", $trimmed_array, TRUE)) {
+    } elseif (in_array("systems", $trimmed_array, TRUE)) {
         array_push($fallback, 85);
-    };
+    }
 
     $fallback2 = array_unique($fallback);
 
@@ -121,37 +106,37 @@ $resultID = mysql_query($query, $linkID) or die(mysql_error());
 		} else {
 			array_push($freight_class_array, 60);
 		}
-	};
+	}
 
 	if ($itemArray[$x]['weight_controller_parts'] > 0) {
 		array_push($freight_class_array, 775);
-	};
+	}
 
 	if ($itemArray[$x]['weight_rails'] > 0) {
 		array_push($freight_class_array, 925);
-	};
+	}
 
 	if ($itemArray[$x]['weight_solar_panels'] > 0) {
 		array_push($freight_class_array, 85);
-	};
+	}
 
 	if (count($freight_class_array) == 0 ){
         if (count($fallback) == 0) {
 		    $freight_class = 'NULL';
-        }elseif(count($fallback) == 1) {
+        } elseif (count($fallback) == 1) {
             $freight_class = $fallback[0];
-        } elseif(count($fallback) > 1 && count($fallback2) == 1){
+        } elseif (count($fallback) > 1 && count($fallback2) == 1) {
             $freight_class = $fallback2[0];
-        }elseif (count($fallback) >1 && count($fallback2) >1) {
+        } elseif (count($fallback) >1 && count($fallback2) >1) {
             $freight_class = 85;
-        }else {
+        } else {
             $freight_class = 0;
         }
 	} elseif (count($freight_class_array) > 1) {
 		$freight_class = 85;
 	} else {
 		$freight_class = $freight_class_array[0];
-	};
+	}
 
     	array_push($temp_array, $partNumber, $freight_class);
     	array_push($data, $temp_array);
