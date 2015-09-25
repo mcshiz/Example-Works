@@ -1,4 +1,4 @@
-Here are just a couple example works that I have done recently.
+Here are just a couple example works that I have done. Although most of this is outdated it shows some of my coding stlye.
 Most of these files are part of a project to integrate Ultracart into our existing website.
 
 
